@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+        }
+
+        section {
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 40px auto;
+        }
+
+        section ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+
+        }
+
+        section ul li {
+            list-style: none;
+            background: #eee;
+            padding: 12px 20px;
+            margin: 5px;
+            letter-spacing: 1px;
+            cursor: pointer;
+
+        }
+
+        section ul li.active {
+            background: #03a9f4;
+            color: #fff;
+        }
+
+        .product {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .product .itemBox {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 5px;
+            display: block;
+        }
+
+        .product .itemBox.hide {
+            display: none;
+        }
+
+        .product .itemBox img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <ul>
+            <li class="list active" data-filter="all">ALL</li>
+            <li class="list" data-filter="hills">HILLS</li>
+            <li class="list" data-filter="mountains">MOUNTAINS</li>
+            <li class="list" data-filter="rivers">RIVERS</li>
+            <li class="list" data-filter="waterfalls">WATERFALLS</li>
+            <li class="list" data-filter="thunders">THUNDERS</li>
+        </ul>
+        <div class="product">
+            <div class="itemBox" data-item="hills"><img src="assets/hills1.jpg" alt=""></div>
+            <div class="itemBox" data-item="mountains"><img src="assets/mount1.jpg" alt=""></div>
+            <div class="itemBox" data-item="rivers"><img src="assets/r1.jpg" alt=""></div>
+            <div class="itemBox" data-item="waterfalls"><img src="assets/waterfall3.jpg" alt=""></div>
+            <div class="itemBox" data-item="thunders"><img src="assets/t3.jpg" alt=""></div>
+            <div class="itemBox" data-item="hills"><img src="assets/hills2.jpg" alt=""></div>
+            <div class="itemBox" data-item="mountains"><img src="assets/mount2.jpg" alt=""></div>
+            <div class="itemBox" data-item="hills"><img src="assets/r2.jpg" alt=""></div>
+            <div class="itemBox" data-item="waterfalls"><img src="assets/waterfall2.jpg" alt=""></div>
+            <div class="itemBox" data-item="thunders"><img src="assets/t1.jpg" alt=""></div>
+            <div class="itemBox" data-item="hills"><img src="assets/hills3.jpg" alt=""></div>
+            <div class="itemBox" data-item="mountains"><img src="assets/mount3.jpg!d" alt=""></div>
+            <div class="itemBox" data-item="waterfalls"><img src="assets/waterfalls.jpg" alt=""></div>
+            <div class="itemBox" data-item="thunders"><img src="assets/t2.jpg" alt=""></div>
+
+        </div>
+    </section>
+    <script>
+       let list = document.querySelectorAll('.list');
+       let itemBox = document.querySelectorAll('.itemBox');
+
+       for( let i = 0; i<list.length; i++)
+       {
+        list[i].addEventListener('click', function(){
+            for(let j = 0; j<list.length; j++){
+               list[j].classList.remove('active');
+            }
+            this.classList.add('active');
+        
+        let dataFilter = this.getAttribute('data-filter');
+        for( let k = 0; k<itemBox.length;k++)
+        {
+            itemBox[k].classList.remove('hide');
+            itemBox[k].classList.add('hide');
+
+            if(  itemBox[k].getAttribute('data-item') == dataFilter ||
+       dataFilter == "all"){
+        itemBox[k].classList.remove('hide');
+        itemBox[k].classList.add('active');
+       }
+        }
+        
+        
+        })
+       }
+    </script>
+</body>
+
+</html>
